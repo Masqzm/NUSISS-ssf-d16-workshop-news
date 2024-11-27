@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>News API</title>
+		<link rel="stylesheet" href="/styles.css">
+	</head>
+	<body>
+
+		<h1>News API</h1>
+
+		<form method="GET" action="/search">
+			<table>
+				<tr>
+					<td> Keywords </td>
+					<td> <input type="text" name="query" size="30"> </td>
+				</tr>
+				<tr>
+					<td> Category </td>
+					<td> 
+						<select name="category">
+							<option value="general" selected>General</option>
+							<option value="business">Business</option>
+							<option value="entertainment">Entertainment</option>
+							<option value="health">Health</option>
+							<option value="science">Science</option>
+							<option value="sports">Sports</option>
+							<option value="technology">Technology</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td> Country </td>
+					<td>
+						<select name="country">
+							<!-- <option value="sg" selected>Singapore</option> -->
+							<option value="us" selected>United States</option>
+							
+							<option data-th-each="c : ${countries}"
+									data-th-unless="${c.code == 'us'}"
+									data-th-value="${c.code}"
+									data-th-text="${c.name}">
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td> <button type="submit">Search</button> </td>
+				</tr>
+			</table>
+		</form>
+		
+	</body>
+</html>

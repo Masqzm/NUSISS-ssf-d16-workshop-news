@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Headlines Results</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <h1>Keyword(s): <code data-th-text="${query}"></code> </h1>
+
+    <div data-th-if="${#lists.isEmpty(newsResults)}">
+        <h3>Your search produces no result!</h3>
+    </div>
+
+    <div data-th-unless="${#lists.isEmpty(newsResults)}">
+        <div data-th-each="news : ${newsResults}" data-th-object="${news}" class="news">
+            <div><h2 data-th-text="*{title}"></h2></div>
+
+            <div data-th-if="${#strings.isEmpty(news.imgURL)}">
+                <img data-th-src="https://nbhc.ca/sites/default/files/styles/article/public/default_images/news-default-image%402x_0.png?itok=B4jML1jF">
+            </div>
+            <div data-th-unless="${#strings.isEmpty(news.imgURL)}">
+                <img data-th-src="*{imgURL}">
+            </div>
+
+            <div data-th-text="*{desc}" class="desc"></div>
+
+            <div data-th-text="*{content}"></div>
+
+            <div><a data-th-href="*{url}">Link to article</a></div>
+        </div>
+    </div>
+
+    <a data-th-href="@{/}"> Back </a>
+</body>
+
+</html>

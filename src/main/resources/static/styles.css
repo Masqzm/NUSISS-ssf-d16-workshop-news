@@ -1,0 +1,17 @@
+img {
+    width: 500px;
+    height: auto;
+}
+
+.news {
+    margin: 20px;
+    border: solid 1px;
+}
+
+.news > div {
+    margin: 10px;
+}
+
+.desc {
+    font-style: italic;
+}
